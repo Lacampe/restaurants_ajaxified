@@ -1,0 +1,15 @@
+<h1><%= @restaurant.name %></h1>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:green|#{@restaurant.address}" %>
+<h2>
+  <%= pluralize @restaurant.reviews.size, "review" %>
+</h2>
+
+
+<ul id="reviews">
+  <% @restaurant.reviews.each do |review| %>
+    <%= render 'reviews/review', review: review %>
+  <% end %>
+</ul>
+
+
+<%= render 'reviews/form', {restaurant: @restaurant, review: @review} %>
